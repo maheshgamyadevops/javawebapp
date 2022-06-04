@@ -36,7 +36,7 @@ pipeline{
 			  nexusUrl: '65.1.111.69:8081/', 
 			  nexusVersion: 'nexus3', 
 			  protocol: 'http', 
-			  repository: 'maheshR/', 
+			  repository: 'Simple-App/', 
 			  version: '9.1.14'
             }
          }
