@@ -31,19 +31,12 @@ pipeline {
         {
           steps
           {
-             script
-             {
-               def sonarscanner = tool 'SonarQube Scanner for Jenkins Version2.14'
-               withSonarQubeEnv(credentialsId: '6a0b03d3c04924c7675e1bb1d923efdbace7565a') {
+             withSonarQubeEnv (installationName: 'sonarmdk')
+				 {
                
-                    // some block
-                    sh """
-                    ${sonarscanner}/opt/sonarqube/bin/sonar-scanner
-                
-                    """
+                    sh './mvn clean install sonar:sonar'
                 }
-             }
-          }
+            }
         }
         
         
