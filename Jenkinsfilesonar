@@ -8,25 +8,10 @@ pipeline {
 
   
     
-    stages {
+    stages 
+	{
         
-        stage('Build') {
-            steps {
-                // Run the maven build
-                sh 'mvn clean install'
-                
-            }
-        }
-        
-        stage('Code Coverage')
-        {
-          steps
-          {
-         
-           jacoco()
-           }
-        }
-        
+              
         stage('Code Quality Check (Sonarqube)')
         {
           steps
@@ -42,7 +27,6 @@ pipeline {
         
         
     }
+}
         
-    }
-	
-	
+    
