@@ -1,32 +1,42 @@
-pipeline {
-
-    // run on jenkins nodes tha has slave label .....
-
-    agent { label 'maven' }
-
-    // global env variables
-
-  
-    
-    stages 
-	{
-        
-              
-        stage('Code Quality Check (Sonarqube)')
-        {
-          steps
-          {
-             withSonarQubeEnv (installationName: 'sonarmdk')
-				 {
-               
-                    sh 'mvn clean install sonar:sonar'
-                }
+pipeline{
+    agent {
+	label 'maven'
+	}
+    environment {
+        PATH = "$PATH:/usr/share/apache-maven/bin"
+    }
+    stages{
+       stage('GetCode'){
+            steps{
+                git branch: 'main', credentialsId: 'jenkins_maven_slave', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
             }
+         }        
+       stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+         }
+        stage('SonarQube analysis') {
+        steps{
+        withSonarQubeEnv('sonarqube') { 
+        sh "mvn sonar:sonar"
+    }
         }
-        
-        
-        
+        }
+		stage('Upload to Nexus'){
+            steps{
+                nexusArtifactUploader artifacts: 
+				[[artifactId: 'carapp20.0', classifier: '', file: 'target/SimpleWebApplication.war', type: 'war']],
+				credentialsId: 'nexus-login', 
+				groupId: 'maven_webapp', 
+				nexusUrl: '43.204.231.186:9000/', 
+				nexusVersion: 'nexus2', 
+				protocol: 'http', 
+				repository: 'webapp', 
+				version: '1.0.0'
+            }
+         }
+		
+       
     }
 }
-        
-    
