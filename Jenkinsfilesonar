@@ -25,8 +25,11 @@ pipeline{
         }
 		stage('Upload to Nexus'){
             steps{
-                nexusArtifactUploader artifacts: 
-				[[artifactId: 'carapp20.0', classifier: '', file: 'target/SimpleWebApplication.war', type: 'war']],
+                nexusArtifactUploader artifacts: [
+		[artifactId: 'carapp20.0', classifier: '', 
+		 file: 'target/SimpleWebApplication.war', 
+		 type: 'war']
+		 ],
 				credentialsId: 'nexus-login', 
 				groupId: 'maven_webapp', 
 				nexusUrl: '43.204.231.186:9000/', 
