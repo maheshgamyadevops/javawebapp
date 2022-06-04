@@ -1,0 +1,55 @@
+pipeline {
+
+    // run on jenkins nodes tha has slave label .....
+
+    agent { label 'maven' }
+
+    // global env variables
+
+  
+    
+    stages {
+        
+        stage('Build') {
+            steps {
+                // Run the maven build
+                sh 'mvn clean install'
+                
+            }
+        }
+        
+        stage('Code Coverage')
+        {
+          steps
+          {
+         
+           jacoco()
+           }
+        }
+        
+        stage('Code Quality Check (Sonarqube)')
+        {
+          steps
+          {
+             script
+             {
+               def sonarscanner = tool 'sonar_scanner'
+               withSonarQubeEnv(credentialsId: '6a0b03d3c04924c7675e1bb1d923efdbace7565a') {
+               
+                    // some block
+                    sh """
+                    ${sonarscanner}/bin/sonar-scanner
+                
+                    """
+                }
+             }
+          }
+        }
+        
+        
+        
+    }
+        
+    }
+	
+	
