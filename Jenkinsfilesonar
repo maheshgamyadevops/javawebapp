@@ -27,7 +27,7 @@ pipeline{
             steps{
               nexusArtifactUploader artifacts: [
 			  [artifactId: 'SimpleWebApplication', classifier: '', 
-			  file: 'target/SimpleWebApplication Maven Webapp-9.1.14.war', type: 'war']
+			  file: 'target/SimpleWebApplication.war', type: 'war']
 			  ], 
 			  credentialsId: 'nexus-login', 
 			  groupId: 'com.maven.bt', 
