@@ -33,12 +33,12 @@ pipeline {
           {
              script
              {
-               def sonarscanner = tool 'sonar_scanner'
+               def sonarscanner = tool 'SonarQube Scanner for Jenkins Version2.14'
                withSonarQubeEnv(credentialsId: '6a0b03d3c04924c7675e1bb1d923efdbace7565a') {
                
                     // some block
                     sh """
-                    ${sonarscanner}/bin/sonar-scanner
+                    ${sonarscanner}/opt/sonarqube/bin/sonar-scanner
                 
                     """
                 }
