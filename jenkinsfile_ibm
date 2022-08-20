@@ -2,7 +2,7 @@ pipeline
 {
 	agent 
 	{
-		label 'maven2'
+		label 'maven'
 	}
 	stages
 	{
@@ -10,8 +10,19 @@ pipeline
 		{
 			steps 
 			{
-				git branch: 'main', credentialsId: '969330d5-2b46-41fa-9790-fa347987c352', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
+				git branch: 'main', credentialsId: '9ab5100a-763a-4d1b-9d43-12acbdab1f06', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
+			}
+		}
+		stage ('Build')
+		{
+			steps
+			{
+				sh "mvn clean package"
 			}
 		}
 	}
 }
+
+
+
+
