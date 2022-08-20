@@ -1,0 +1,17 @@
+pipeline
+{
+	agent 
+	{
+		label 'maven'
+	}
+	stages
+	{
+		stage ('checkout')
+		{
+			steps 
+			{
+				git branch: 'main', credentialsId: '969330d5-2b46-41fa-9790-fa347987c352', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
+			}
+		}
+	}
+}
