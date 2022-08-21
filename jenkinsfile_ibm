@@ -44,7 +44,7 @@ pipeline
 				nexusArtifactUploader artifacts: [[artifactId: 'SimpleWebApplication',classifier: '', file: 'target/SimpleWebApplication.war', type: 'war']], 
 				credentialsId: '555b152c-3ddf-4c34-a110-7c6e97db6f09', 
 				groupId: 'com.maven.bt', 
-				nexusUrl: '35.154.251.14:8081/repository/ibm_release/', 
+				nexusUrl: '35.154.251.14:8081/repository/ibm/', 
 				nexusVersion: 'nexus3', 
 				protocol: 'http', 
 				repository: 'ibm', 
