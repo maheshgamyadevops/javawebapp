@@ -13,6 +13,16 @@ pipeline
 				git branch: 'main', credentialsId: '64270ad3-a63b-4df7-9787-9cf4a94371d3', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
 			}
 		}
+		stage ('Code quality check sonarqube')
+		{
+			steps
+			{
+				withSonarQubeEnv('sonarqube_ibm')
+				{
+					sh "mvn sonar:sonar"
+				}
+			}
+		}
 		stage ('Build')
 		{
 			steps
@@ -27,16 +37,7 @@ pipeline
 				jacoco()
 			}
 		}
-		stage ('Code quality check sonarqube')
-		{
-			steps
-			{
-				withSonarQubeEnv('sonarqube_ibm')
-				{
-					sh "mvn sonar:sonar"
-				}
-			}
-		}
+		
 	}
 }
 
