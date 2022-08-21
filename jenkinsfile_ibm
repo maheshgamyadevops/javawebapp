@@ -20,6 +20,16 @@ pipeline
 				sh "mvn clean package"
 			}
 		}
+		stage ('Code quality check sonarqube')
+		{
+			steps
+			{
+				withSonarQubeEnv('sonarqube_ibm')
+				{
+					sh "mvn sonar:sonar"
+				}
+			}
+		}
 	}
 }
 
