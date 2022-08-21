@@ -68,7 +68,7 @@
    <distributionManagement>
     <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://35.154.251.14:8081/repository/ibm_nexus/</url>
+      <url>https://agile.nat.bt.com/nexus/repository/EED_Engg-Excellence-Devops-POC_maven_snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>nexus-releases</id>
