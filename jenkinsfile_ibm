@@ -10,7 +10,7 @@ pipeline
 		{
 			steps 
 			{
-				git branch: 'main', credentialsId: '9ab5100a-763a-4d1b-9d43-12acbdab1f06', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
+				git branch: 'main', credentialsId: '64270ad3-a63b-4df7-9787-9cf4a94371d3', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
 			}
 		}
 		stage ('Build')
