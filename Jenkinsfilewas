@@ -1,0 +1,22 @@
+pipeline
+{
+  agent any
+
+  stages{
+    stage ('checkoutcode')
+    {
+        steps
+      {
+             git branch: 'main', credentialsId: 'jenkins_credentials', url: 'https://github.com/maheshgamyadevops/javawebapp.git'
+      }
+    }
+	stage ('build')
+    {
+        steps 
+      {
+			sh "mvn clean package"
+      }
+    }
+  }
+  
+}
